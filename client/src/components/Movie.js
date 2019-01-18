@@ -9,9 +9,14 @@ const MovieContent = styled.div`
   width: 100%;
   margin: 10px;
   background: white;
-  display: block;
-  div {
-    display: inline;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+
+  .checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 `;
 
@@ -22,7 +27,8 @@ class Movie extends Component {
       checked: false
     };
   }
-  handleClick = () => {
+  handleClick = e => {
+    e.stopPropagation();
     const { movieTitle } = this.props;
     this.setState(
       prevState => ({
@@ -35,13 +41,13 @@ class Movie extends Component {
   };
 
   changeMovieStatus = movieTitle => {
-    const { addMovie, removeMovie } = this.props;
+    const { addMovie, removeMovie, activeCategory } = this.props;
+    const movieData = { activeCategory, movieTitle };
+
     if (this.state.checked) {
-      console.log("added");
-      addMovie(movieTitle);
+      addMovie(movieData);
     } else {
-      console.log("removed");
-      removeMovie(movieTitle);
+      removeMovie(movieData);
     }
   };
 
@@ -53,11 +59,10 @@ class Movie extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <MovieContent>
         <Checkbox checked={this.state.checked} onChange={this.handleClick} />
-        {this.props.movieTitle}
+        <div>{this.props.movieTitle}</div>
       </MovieContent>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid } from "react-bootstrap";
+import { Grid, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import CategoryHolder from "components/CategoryHolder";
@@ -13,7 +13,8 @@ class App extends Component {
     super();
     this.state = {
       modal: false,
-      activeCategory: null
+      activeCategory: null,
+      isLoggedIn: false
     };
   }
   handleClick = categoryTitle => {
@@ -22,7 +23,9 @@ class App extends Component {
       activeCategory: categoryTitle
     });
   };
-  closeModal = () => {
+  closeModal = e => {
+    e.stopPropagation();
+
     this.setState({
       modal: false
     });
@@ -39,27 +42,32 @@ class App extends Component {
     });
   };
   componentDidMount() {
+    //this.props.fetchUser();
     console.log(this.props);
-    this.props.fetchUser();
   }
   render() {
     const { modal, activeCategory } = this.state;
-    //const watchedMovies = this.props.movies.length;
+    const watchedMovies = this.props.movies.length;
     const categories = modal ? <div /> : this.displayCategories();
 
     return (
       <Router>
         <div>
-          <Grid fluid>
-            <Header />
-            {categories}
-            <MovieModal
-              isActive={modal}
-              activeCategory={activeCategory}
-              closeModal={this.closeModal}
-              movies={this.props.movies}
-              data={data}
+          <Grid fluid style={{ backgroundColor: "#f2f2f2", padding: 0 }}>
+            <Header
+              isLoggedIn={this.state.isLoggedIn}
+              watchedMovies={watchedMovies}
             />
+            <Row>{categories}</Row>
+            <Row>
+              <MovieModal
+                isActive={modal}
+                activeCategory={activeCategory}
+                closeModal={this.closeModal}
+                movies={this.props.movies}
+                data={data}
+              />
+            </Row>
           </Grid>
         </div>
       </Router>
@@ -67,7 +75,14 @@ class App extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+    movies: state.movies
+  };
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(App);

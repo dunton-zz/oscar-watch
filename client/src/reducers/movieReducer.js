@@ -7,12 +7,15 @@ export default function(state = [], action) {
       addedMovieArray.push(action.payload);
       return addedMovieArray;
     case REMOVE_MOVIE:
-      const arrayTest = movie => {
-        return movie !== action.payload;
-      };
-      const removedMovieArray = state.filter(arrayTest);
-
-      return removedMovieArray;
+      for (let i = 0; i < state.length; i++) {
+        if (
+          state[i].activeCategory === action.payload.activeCategory &&
+          state[i].movieTitle === action.payload.movieTitle
+        ) {
+          state.splice(i, 1);
+        }
+      }
+      return state;
     default:
       return state;
   }

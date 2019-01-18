@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import Movie from "components/Movie";
 import styled from "styled-components";
+import { Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  background: grey;
+  background: #cccccc;
   top: 0;
   display: flex;
   justify-content: center;
+  z-index: 0;
 `;
 
 const Modal = styled.div`
@@ -45,6 +49,18 @@ const MovieWrapper = styled.div`
   }
 `;
 
+const CategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+`;
+
+const ButtonHolder = styled.div`
+  align-self: center;
+  margin-top: 20px;
+`;
+
 class MovieModal extends Component {
   constructor(props) {
     super(props);
@@ -59,25 +75,44 @@ class MovieModal extends Component {
         if (dataCategory.category === activeCategory) {
           const nominees = dataCategory.nominees;
           return nominees.map((nominee, i) => {
-            return <Movie movieTitle={nominee} key={i} movies={movies} />;
+            return (
+              <Movie
+                movieTitle={nominee}
+                key={i}
+                movies={movies}
+                activeCategory={activeCategory}
+              />
+            );
           });
         }
       });
     }
   };
+
+  saveMovieData = () => {
+    const { saveMovies, movies } = this.props;
+    saveMovies(movies);
+  };
   render() {
     const { isActive, activeCategory, closeModal } = this.props;
     if (isActive) {
       return (
-        <ModalWrapper>
+        <ModalWrapper onClick={e => closeModal(e)}>
           <Modal>
-            <CategoryContent>
-              <div>{activeCategory}</div>
-            </CategoryContent>
-            <CloseButton onClick={closeModal}>x</CloseButton>
-            <MovieWrapper>
-              <div>{this.addMovieData()}</div>
-            </MovieWrapper>
+            <CategoryWrapper onClick={e => e.stopPropagation()}>
+              <CategoryContent>
+                <div>
+                  <h2>{activeCategory}</h2>
+                </div>
+              </CategoryContent>
+              <CloseButton onClick={e => closeModal(e)}>x</CloseButton>
+              <MovieWrapper>
+                <div>{this.addMovieData()}</div>
+              </MovieWrapper>
+              <ButtonHolder>
+                <Button onClick={this.saveMovieData}>SAVE PROGRESS</Button>
+              </ButtonHolder>
+            </CategoryWrapper>
           </Modal>
         </ModalWrapper>
       );
@@ -86,4 +121,7 @@ class MovieModal extends Component {
   }
 }
 
-export default MovieModal;
+export default connect(
+  null,
+  actions
+)(MovieModal);

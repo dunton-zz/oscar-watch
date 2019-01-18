@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const ProfileWrapper = styled.div`
   width: 100%;
@@ -9,12 +8,13 @@ const ProfileWrapper = styled.div`
   background: purple;
   color: white;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   font-size: 24px;
   font-weight: bold;
   position: relative;
   z-index: 10;
+  flex-direction: row;
 
   p {
     span {
@@ -23,33 +23,62 @@ const ProfileWrapper = styled.div`
   }
 `;
 
-class ProfileHeader extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      auth: false
-    };
+const ButtonHolder = styled.div`
+  justify-self: flex-end;
+
+  button {
+    margin-right: 10px;
   }
+`;
 
-  render() {
-    console.log(this.props);
-    const movieMath = +(
-      Math.round((this.props.number / 60) * 100 + "e+2") + "e-2"
-    );
+const MovieMathHolder = styled.div`
+  margin: 0 auto 0 10px;
 
-    return (
-      <ProfileWrapper>
-        <p>
-          {this.props.userName}
-          <span>{movieMath}%</span>
-        </p>
-      </ProfileWrapper>
-    );
+  p {
+    margin: 0;
+    padding: 0;
   }
-}
+`;
 
-function mapStateToProps(state) {
-  return { auth: state.auth };
-}
+const ProfileHeader = props => {
+  const movieMath = props.isLoggedIn
+    ? +(Math.round((props.number / 60) * 100 + "e+2") + "e-2") + "%"
+    : "No Progress";
+  const renderContent = props => {
+    switch (props.isLoggedIn) {
+      case null:
+        return;
+      case false:
+        return (
+          <ButtonHolder>
+            <Button bsStyle="primary">
+              <a href="/auth/google" style={{ color: "white" }}>
+                Login With Google
+              </a>
+            </Button>
+            <Button bsStyle="primary">
+              <a href="/auth/facebook" style={{ color: "white" }}>
+                Login With Facebook
+              </a>
+            </Button>
+          </ButtonHolder>
+        );
+      case true:
+        return <span>{props.userName}</span>;
+      default:
+        return;
+    }
+  };
 
-export default connect(mapStateToProps)(ProfileHeader);
+  const content = renderContent(props);
+  return (
+    <ProfileWrapper>
+      <MovieMathHolder>
+        <p>{movieMath}</p>
+      </MovieMathHolder>
+      {content}
+    </ProfileWrapper>
+  );
+};
+
+export default ProfileHeader;

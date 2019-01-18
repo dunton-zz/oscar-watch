@@ -6,11 +6,15 @@ module.exports = app => {
   // watch for 'get' requests at '/auth/google'
   app.get(
     "/auth/google",
-    // 'google' tells passport to use the google strategy
+    //'google' tells passport to use the google strategy
     passport.authenticate("google", {
       scope: ["profile", "email"] // list of internal permissions we want
     })
   );
+
+  app.get("/", (req, res) => {
+    res.send("get request");
+  });
 
   app.get(
     "/auth/facebook",
