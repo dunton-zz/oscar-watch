@@ -9,7 +9,7 @@ const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  background: #cccccc;
+  background: #d0e1f9;
   top: 0;
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@ const Modal = styled.div`
   width: 70%;
   height: 80%;
   position: absolute;
-  background: red;
+  background: #283655;
   top: 10%;
 `;
 
@@ -32,17 +32,21 @@ const CategoryContent = styled.div`
 `;
 
 const CloseButton = styled.div`
-  color: blue;
+  color: #fff;
   justify-self: flex-end;
   top: 0;
   right: 0;
   position: absolute;
-  font-size: 20px;
+  font-size: 35px;
+  margin-right: 5px;
+  margin-top: -3px;
+  font-family: "Titillium Web", sans-serif;
 `;
 
 const MovieWrapper = styled.div`
   display: flex;
   justify-content: center;
+  font-family: "Titillium Web", sans-serif;
 
   > div {
     width: 80%;
@@ -54,6 +58,7 @@ const CategoryWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  font-family: "Titillium Web", sans-serif;
 `;
 
 const ButtonHolder = styled.div`
@@ -105,7 +110,7 @@ class MovieModal extends Component {
                   <h2>{activeCategory}</h2>
                 </div>
               </CategoryContent>
-              <CloseButton onClick={e => closeModal(e)}>x</CloseButton>
+              <CloseButton onClick={e => closeModal(e)}>&#10006;</CloseButton>
               <MovieWrapper>
                 <div>{this.addMovieData()}</div>
               </MovieWrapper>

@@ -5,7 +5,7 @@ import MovieCategory from "components/MovieCategory";
 const CategoryHolder = props => {
   const { handleClick, categoryTitle } = props;
   return (
-    <Col md={6} sm={12}>
+    <Col md={6} sm={12} style={{ display: "flex", justifyContent: "center" }}>
       <MovieCategory categoryTitle={categoryTitle} handleClick={handleClick} />
     </Col>
   );

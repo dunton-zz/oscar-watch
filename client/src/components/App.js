@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       modal: false,
       activeCategory: null,
-      isLoggedIn: false
+      isLoggedIn: true
     };
   }
   handleClick = categoryTitle => {
@@ -45,19 +45,17 @@ class App extends Component {
     //this.props.fetchUser();
     console.log(this.props);
   }
+
   render() {
     const { modal, activeCategory } = this.state;
-    const watchedMovies = this.props.movies.length;
+
     const categories = modal ? <div /> : this.displayCategories();
 
     return (
       <Router>
         <div>
-          <Grid fluid style={{ backgroundColor: "#f2f2f2", padding: 0 }}>
-            <Header
-              isLoggedIn={this.state.isLoggedIn}
-              watchedMovies={watchedMovies}
-            />
+          <Grid fluid style={{ backgroundColor: "#d0e1f9" }}>
+            <Header isLoggedIn={this.state.isLoggedIn} />
             <Row>{categories}</Row>
             <Row>
               <MovieModal

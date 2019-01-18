@@ -13,6 +13,7 @@ const MovieContent = styled.div`
   align-items: center;
   border-radius: 10px;
   padding: 10px;
+  font-family: "Titillium Web", sans-serif;
 
   .checkbox {
     margin-top: 0;

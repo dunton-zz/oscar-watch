@@ -2,14 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const CategoryWrapper = styled.div`
-  height: 400px;
-  width: 100%;
+  height: 300px;
+  width: 85%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  background-color: aqua;
-  margin: 20px 0;
+  font-size: 32px;
+  background-color: #4d648d;
+  margin: 20px 0px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: "Titillium Web", sans-serif;
 `;
 
 const MovieCategory = props => {

@@ -4,5 +4,6 @@ import movieReducer from "reducers/movieReducer";
 import authReducer from "reducers/authReducer";
 
 export default combineReducers({
-  movies: movieReducer
+  movies: movieReducer,
+  auth: authReducer
 });
