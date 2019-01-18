@@ -98,6 +98,11 @@ class MovieModal extends Component {
     const { saveMovies, movies } = this.props;
     saveMovies(movies);
   };
+
+  handleSaveButton = e => {
+    this.props.closeModal(e);
+    this.saveMovieData();
+  };
   render() {
     const { isActive, activeCategory, closeModal } = this.props;
     if (isActive) {
@@ -115,7 +120,9 @@ class MovieModal extends Component {
                 <div>{this.addMovieData()}</div>
               </MovieWrapper>
               <ButtonHolder>
-                <Button onClick={this.saveMovieData}>SAVE PROGRESS</Button>
+                <Button onClick={e => this.handleSaveButton(e)}>
+                  SAVE PROGRESS
+                </Button>
               </ButtonHolder>
             </CategoryWrapper>
           </Modal>
