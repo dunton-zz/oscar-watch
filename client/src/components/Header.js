@@ -1,19 +1,26 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
 import ProfileHeader from "components/ProfileHeader";
+import styled from "styled-components";
+
+const HeaderWrapper = styled.div`
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+`;
 
 const Header = props => {
   const { isLoggedIn, number, userName } = props;
   return (
-    <Row>
-      <Col md={12}>
-        <ProfileHeader
-          userName={userName}
-          isLoggedIn={isLoggedIn}
-          number={number}
-        />
-      </Col>
-    </Row>
+    <HeaderWrapper>
+      {" "}
+      <ProfileHeader
+        userName={userName}
+        isLoggedIn={isLoggedIn}
+        number={number}
+      />
+    </HeaderWrapper>
   );
 };
 

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 // import { connect } from "react-redux";
 // import * as actions from "../actions";
-import { Checkbox } from "react-bootstrap";
+// import { Checkbox } from "react-bootstrap";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const MovieContent = styled.div`
   border: 1px solid black;
@@ -66,7 +67,12 @@ class Movie extends Component {
   render() {
     return (
       <MovieContent>
-        <Checkbox checked={this.state.checked} onChange={this.handleClick} />
+        <Checkbox
+          checked={this.state.checked}
+          onChange={this.handleClick}
+          classes={{ colorPrimary: "#283655" }}
+          color="primary"
+        />
         <div>{this.props.movieTitle}</div>
       </MovieContent>
     );

@@ -77,7 +77,6 @@ class ProfileHeader extends Component {
   };
 
   render() {
-    console.log(this.props);
     const content = this.renderContent(this.props);
     const movieMath = this.props.isLoggedIn
       ? +(Math.round((this.props.number / 60) * 100 + "e+2") + "e-2") + "%"

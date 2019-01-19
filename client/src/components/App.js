@@ -7,6 +7,7 @@ import MovieModal from "components/MovieModal";
 import Header from "components/Header";
 import data from "data/";
 // import * as actions from "../actions";
+import filmsWatched from "functions/filmsWatched";
 import axios from "axios";
 
 class App extends Component {
@@ -15,7 +16,7 @@ class App extends Component {
     this.state = {
       modal: false,
       activeCategory: null,
-      isLoggedIn: true,
+      isLoggedIn: false,
       movies: [],
       number: 0,
       userName: null
@@ -40,11 +41,17 @@ class App extends Component {
 
   displayCategories = () => {
     return data.map((dataCategory, i) => {
+      const numberWatched = filmsWatched(
+        dataCategory.category,
+        this.state.movies
+      );
       return (
         <CategoryHolder
           handleClick={this.handleClick}
           categoryTitle={dataCategory.category}
           key={i}
+          nomineeNumber={dataCategory.nominees.length}
+          numberWatched={numberWatched}
         />
       );
     });
@@ -106,8 +113,10 @@ class App extends Component {
   fetchUser = async function() {
     const res = await axios.get("/api/current_user");
     const userName = res.data.name;
+    const isLoggedIn = res.data.length > 0 ? true : false;
     this.setState({
-      userName
+      userName,
+      isLoggedIn
     });
     return;
   };
@@ -123,12 +132,12 @@ class App extends Component {
     console.log(userName);
     return (
       <div>
-        <Grid fluid style={{ backgroundColor: "#d0e1f9" }}>
-          <Header
-            isLoggedIn={this.state.isLoggedIn}
-            number={number}
-            userName={userName}
-          />
+        <Header
+          isLoggedIn={this.state.isLoggedIn}
+          number={number}
+          userName={userName}
+        />
+        <Grid fluid style={{ backgroundColor: "#d0e1f9", marginTop: 80 }}>
           <Row>{categories}</Row>
           <Row>
             <MovieModal

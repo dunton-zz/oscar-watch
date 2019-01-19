@@ -13,14 +13,30 @@ const CategoryWrapper = styled.div`
   border-radius: 10px;
   color: #ffffff;
   font-family: "Titillium Web", sans-serif;
+  flex-direction: column;
+
+  h2 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 26px;
+  }
 `;
 
 const MovieCategory = props => {
-  const { categoryTitle, handleClick } = props;
+  const { categoryTitle, handleClick, nomineeNumber, numberWatched } = props;
   const passClick = () => {
     handleClick(categoryTitle);
   };
-  return <CategoryWrapper onClick={passClick}>{categoryTitle}</CategoryWrapper>;
+  return (
+    <CategoryWrapper onClick={passClick}>
+      <h2>{categoryTitle}</h2>
+      <p>
+        {numberWatched}/{nomineeNumber}
+      </p>
+    </CategoryWrapper>
+  );
 };
 
 export default MovieCategory;
