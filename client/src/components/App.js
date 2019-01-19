@@ -61,16 +61,10 @@ class App extends Component {
     const { movies } = this.state;
     console.log(movies);
     //send api request
-    const res = await axios
-      .post("//localhost:5000/save/data", {
-        movies
-      })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    axios.post("/api/save", {
+      name: "FUCK YOU"
+    });
+
     return;
   };
 

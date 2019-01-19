@@ -3,12 +3,10 @@ const passport = require("passport");
 
 // export routes
 module.exports = app => {
-  // watch for 'get' requests at '/auth/google'
   app.get(
     "/auth/google",
-    //'google' tells passport to use the google strategy
     passport.authenticate("google", {
-      scope: ["profile", "email"] // list of internal permissions we want
+      scope: ["profile", "email"]
     })
   );
 
@@ -25,7 +23,6 @@ module.exports = app => {
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
-      console.log("callback google");
       res.redirect("/");
     }
   );

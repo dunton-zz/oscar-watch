@@ -41,7 +41,6 @@ passport.use(
           googleId: profile.id,
           name: profile.displayName
         }).save(); // create and save new instance of a user
-        console.log("DONE WITH GOOGLE LOGIN");
         done(null, user);
       }
     }
