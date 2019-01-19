@@ -12,10 +12,6 @@ module.exports = app => {
     })
   );
 
-  app.get("/", (req, res) => {
-    res.send("get request");
-  });
-
   app.get(
     "/auth/facebook",
     // 'google' tells passport to use the google strategy

@@ -7,6 +7,7 @@ import MovieModal from "components/MovieModal";
 import Header from "components/Header";
 import data from "data/";
 import * as actions from "../actions";
+import axios from "axios";
 
 class App extends Component {
   constructor() {
@@ -87,33 +88,37 @@ class App extends Component {
     });
   };
 
+  async componentWillMount() {
+    const res = await axios.get("/api/current_user");
+    console.log(res);
+    return;
+  }
+
   render() {
     const { modal, activeCategory, number, movies } = this.state;
 
     const categories = modal ? <div /> : this.displayCategories();
 
     return (
-      <Router>
-        <div>
-          <Grid fluid style={{ backgroundColor: "#d0e1f9" }}>
-            <Header isLoggedIn={this.state.isLoggedIn} number={number} />
-            <Row>{categories}</Row>
-            <Row>
-              <MovieModal
-                isActive={modal}
-                activeCategory={activeCategory}
-                closeModal={this.closeModal}
-                movies={movies}
-                data={data}
-                countMovies={this.countMovies}
-                addMovie={this.addMovie}
-                removeMovie={this.removeMovie}
-                saveMovieData={this.saveMovieData}
-              />
-            </Row>
-          </Grid>
-        </div>
-      </Router>
+      <div>
+        <Grid fluid style={{ backgroundColor: "#d0e1f9" }}>
+          <Header isLoggedIn={this.state.isLoggedIn} number={number} />
+          <Row>{categories}</Row>
+          <Row>
+            <MovieModal
+              isActive={modal}
+              activeCategory={activeCategory}
+              closeModal={this.closeModal}
+              movies={movies}
+              data={data}
+              countMovies={this.countMovies}
+              addMovie={this.addMovie}
+              removeMovie={this.removeMovie}
+              saveMovieData={this.saveMovieData}
+            />
+          </Row>
+        </Grid>
+      </div>
     );
   }
 }
