@@ -90,7 +90,8 @@ class App extends Component {
 
   async componentWillMount() {
     const res = await axios.get("/api/current_user");
-    console.log(res);
+    const userId = res.data.googleId;
+    console.log(userId);
     return;
   }
 
