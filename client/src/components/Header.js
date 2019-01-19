@@ -3,11 +3,15 @@ import { Row, Col } from "react-bootstrap";
 import ProfileHeader from "components/ProfileHeader";
 
 const Header = props => {
-  const { isLoggedIn } = props;
+  const { isLoggedIn, number } = props;
   return (
     <Row>
       <Col md={12}>
-        <ProfileHeader userName="Ryan" isLoggedIn={isLoggedIn} />
+        <ProfileHeader
+          userName="Ryan"
+          isLoggedIn={isLoggedIn}
+          number={number}
+        />
       </Col>
     </Row>
   );

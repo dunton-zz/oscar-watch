@@ -78,8 +78,7 @@ class ProfileHeader extends Component {
     console.log(this.props);
     const content = this.renderContent(this.props);
     const movieMath = this.props.isLoggedIn
-      ? +(Math.round((this.props.movies.length / 60) * 100 + "e+2") + "e-2") +
-        "%"
+      ? +(Math.round((this.props.number / 60) * 100 + "e+2") + "e-2") + "%"
       : "No Progress";
     return (
       <ProfileWrapper>

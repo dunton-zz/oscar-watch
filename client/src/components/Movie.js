@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import * as actions from "../actions";
+// import { connect } from "react-redux";
+// import * as actions from "../actions";
 import { Checkbox } from "react-bootstrap";
 
 const MovieContent = styled.div`
@@ -44,7 +44,6 @@ class Movie extends Component {
   changeMovieStatus = movieTitle => {
     const { addMovie, removeMovie, activeCategory } = this.props;
     const movieData = { activeCategory, movieTitle };
-
     if (this.state.checked) {
       addMovie(movieData);
     } else {
@@ -53,9 +52,14 @@ class Movie extends Component {
   };
 
   componentWillMount() {
-    const { movies, movieTitle } = this.props;
-    if (movies.indexOf(movieTitle) !== -1) {
-      this.setState({ checked: true });
+    const { movies, movieTitle, activeCategory } = this.props;
+    for (let i = 0; i < movies.length; i++) {
+      if (
+        movies[i].activeCategory === activeCategory &&
+        movies[i].movieTitle === movieTitle
+      ) {
+        this.setState({ checked: true });
+      }
     }
   }
 
@@ -69,7 +73,4 @@ class Movie extends Component {
   }
 }
 
-export default connect(
-  null,
-  actions
-)(Movie);
+export default Movie;

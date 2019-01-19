@@ -14,7 +14,9 @@ class App extends Component {
     this.state = {
       modal: false,
       activeCategory: null,
-      isLoggedIn: true
+      isLoggedIn: true,
+      movies: [],
+      number: 0
     };
   }
   handleClick = categoryTitle => {
@@ -23,6 +25,7 @@ class App extends Component {
       activeCategory: categoryTitle
     });
   };
+
   closeModal = e => {
     e.stopPropagation();
 
@@ -30,6 +33,7 @@ class App extends Component {
       modal: false
     });
   };
+
   displayCategories = () => {
     return data.map((dataCategory, i) => {
       return (
@@ -41,13 +45,50 @@ class App extends Component {
       );
     });
   };
-  componentDidMount() {
-    //this.props.fetchUser();
-    console.log(this.props);
-  }
+
+  saveMovieData = () => {
+    //send api request
+    console.log("SAVING DATA");
+  };
+
+  addMovie = movieTitle => {
+    const addedMovieArray = this.state.movies;
+    addedMovieArray.push(movieTitle);
+    const number = addedMovieArray.length;
+
+    this.setState({
+      movies: addedMovieArray,
+      number
+    });
+  };
+
+  removeMovie = movieTitle => {
+    const removedMovieArray = this.state.movies;
+    for (let i = 0; i < removedMovieArray.length; i++) {
+      if (
+        removedMovieArray[i].activeCategory === movieTitle.activeCategory &&
+        removedMovieArray[i].movieTitle === movieTitle.movieTitle
+      ) {
+        removedMovieArray.splice(i, 1);
+      }
+    }
+    const number = removedMovieArray.length;
+
+    this.setState({
+      movies: removedMovieArray,
+      number
+    });
+  };
+
+  countMovies = () => {
+    const number = this.props.movies.length;
+    this.setState({
+      number
+    });
+  };
 
   render() {
-    const { modal, activeCategory } = this.state;
+    const { modal, activeCategory, number, movies } = this.state;
 
     const categories = modal ? <div /> : this.displayCategories();
 
@@ -55,15 +96,19 @@ class App extends Component {
       <Router>
         <div>
           <Grid fluid style={{ backgroundColor: "#d0e1f9" }}>
-            <Header isLoggedIn={this.state.isLoggedIn} />
+            <Header isLoggedIn={this.state.isLoggedIn} number={number} />
             <Row>{categories}</Row>
             <Row>
               <MovieModal
                 isActive={modal}
                 activeCategory={activeCategory}
                 closeModal={this.closeModal}
-                movies={this.props.movies}
+                movies={movies}
                 data={data}
+                countMovies={this.countMovies}
+                addMovie={this.addMovie}
+                removeMovie={this.removeMovie}
+                saveMovieData={this.saveMovieData}
               />
             </Row>
           </Grid>
@@ -73,14 +118,4 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    auth: state.auth,
-    movies: state.movies
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  actions
-)(App);
+export default App;

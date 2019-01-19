@@ -74,7 +74,15 @@ class MovieModal extends Component {
     };
   }
   addMovieData = () => {
-    const { data, isActive, activeCategory, movies } = this.props;
+    const {
+      data,
+      isActive,
+      activeCategory,
+      movies,
+      countMovies,
+      addMovie,
+      removeMovie
+    } = this.props;
     if (isActive) {
       return data.map((dataCategory, i) => {
         if (dataCategory.category === activeCategory) {
@@ -86,6 +94,9 @@ class MovieModal extends Component {
                 key={i}
                 movies={movies}
                 activeCategory={activeCategory}
+                countMovies={countMovies}
+                addMovie={addMovie}
+                removeMovie={removeMovie}
               />
             );
           });
@@ -100,8 +111,9 @@ class MovieModal extends Component {
   };
 
   handleSaveButton = e => {
-    this.props.closeModal(e);
-    this.saveMovieData();
+    const { closeModal, saveMovieData } = this.props;
+    closeModal(e);
+    saveMovieData();
   };
   render() {
     const { isActive, activeCategory, closeModal } = this.props;
@@ -133,7 +145,8 @@ class MovieModal extends Component {
   }
 }
 
-export default connect(
-  null,
-  actions
-)(MovieModal);
+// export default connect(
+//   null,
+//   actions
+// )(MovieModal);
+export default MovieModal;
