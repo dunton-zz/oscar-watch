@@ -2,7 +2,6 @@ const express = require("express"); // import express
 const mongoose = require("mongoose"); // import mongoose
 const cookieSession = require("cookie-session"); // import cookie session
 const passport = require("passport"); // import passport
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const bodyParser = require("body-parser"); // import body-parser
 const keys = require("./config/keys"); // import keys
 const cors = require("cors");
