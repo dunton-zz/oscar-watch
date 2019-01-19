@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Grid, Row } from "react-bootstrap";
-import { connect } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
+// import { connect } from "react-redux";
+// import { BrowserRouter as Router } from "react-router-dom";
 import CategoryHolder from "components/CategoryHolder";
 import MovieModal from "components/MovieModal";
 import Header from "components/Header";
 import data from "data/";
-import * as actions from "../actions";
+// import * as actions from "../actions";
 import axios from "axios";
 
 class App extends Component {
@@ -17,8 +17,11 @@ class App extends Component {
       activeCategory: null,
       isLoggedIn: true,
       movies: [],
-      number: 0
+      number: 0,
+      userName: null
     };
+
+    this.saveMovieData = this.saveMovieData.bind(this);
   }
   handleClick = categoryTitle => {
     this.setState({
@@ -47,9 +50,21 @@ class App extends Component {
     });
   };
 
-  saveMovieData = () => {
+  saveMovieData = async function() {
+    const { movies } = this.state;
+    console.log(movies);
     //send api request
-    console.log("SAVING DATA");
+    const res = await axios
+      .post("//localhost:5000/save/data", {
+        movies
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    return;
   };
 
   addMovie = movieTitle => {
@@ -88,22 +103,32 @@ class App extends Component {
     });
   };
 
-  async componentWillMount() {
+  fetchUser = async function() {
     const res = await axios.get("/api/current_user");
-    const userId = res.data.googleId;
-    console.log(userId);
+    const userName = res.data.name;
+    this.setState({
+      userName
+    });
     return;
+  };
+
+  async componentWillMount() {
+    this.fetchUser();
   }
 
   render() {
-    const { modal, activeCategory, number, movies } = this.state;
+    const { modal, activeCategory, number, movies, userName } = this.state;
 
     const categories = modal ? <div /> : this.displayCategories();
-
+    console.log(userName);
     return (
       <div>
         <Grid fluid style={{ backgroundColor: "#d0e1f9" }}>
-          <Header isLoggedIn={this.state.isLoggedIn} number={number} />
+          <Header
+            isLoggedIn={this.state.isLoggedIn}
+            number={number}
+            userName={userName}
+          />
           <Row>{categories}</Row>
           <Row>
             <MovieModal

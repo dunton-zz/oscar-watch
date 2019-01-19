@@ -30,14 +30,17 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      // this is where we save user info
+      //this is where we save user info
       const existingUser = await User.findOne({ googleId: profile.id }); // query to see if user exists returns a promise
       if (existingUser) {
         // we already have a user with this id
         done(null, existingUser);
       } else {
         // we dont have a user record with this id
-        const user = await new User({ googleId: profile.id }).save(); // create and save new instance of a user
+        const user = await new User({
+          googleId: profile.id,
+          name: profile.displayName
+        }).save(); // create and save new instance of a user
         done(null, user);
       }
     }
@@ -60,7 +63,10 @@ passport.use(
         done(null, existingUser);
       } else {
         // we dont have a user record with this id
-        const user = await new User({ facebookId: profile.id }).save();
+        const user = await new User({
+          facebookId: profile.id,
+          name: profile.displayName
+        }).save();
         done(null, user);
       }
     }

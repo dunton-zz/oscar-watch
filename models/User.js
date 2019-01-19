@@ -5,7 +5,8 @@ const { Schema } = mongoose; // get Schema from mongoose
 const userSchema = new Schema({
   googleId: String, // assigning googleID string property
   facebookId: String, // assigning facebookId a string property
-  movies: { type: Array } // assigning movie property
+  movies: { type: Array }, // assigning movie property
+  name: String
 });
 
 // tells mongoose to create new collection called 'users'

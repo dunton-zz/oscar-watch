@@ -20,6 +20,7 @@ const ProfileWrapper = styled.div`
 
   .name {
     margin-right: 10px;
+    margin-bottom: 0px;
   }
 `;
 
@@ -49,7 +50,8 @@ class ProfileHeader extends Component {
   }
 
   renderContent = () => {
-    switch (this.props.isLoggedIn) {
+    const { isLoggedIn, userName } = this.props;
+    switch (isLoggedIn) {
       case null:
         return;
       case false:
@@ -68,7 +70,7 @@ class ProfileHeader extends Component {
           </ButtonHolder>
         );
       case true:
-        return <p className="name">{this.props.userName}</p>;
+        return <p className="name">{userName}</p>;
       default:
         return;
     }
