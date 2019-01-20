@@ -28,6 +28,16 @@ const ButtonHolder = styled.div`
 
   button {
     margin-right: 10px;
+
+    @media (max-width: 700px) {
+      padding: 3px 12px;
+      margin-bottom: 5px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    display: inline-flex;
+    flex-direction: column;
   }
 `;
 

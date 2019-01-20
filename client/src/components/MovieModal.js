@@ -20,6 +20,11 @@ const Modal = styled.div`
   position: absolute;
   background: #283655;
   top: 10%;
+
+  @media (max-width: 700px) {
+    top: 15%;
+    width: 90%;
+  }
 `;
 
 const CategoryContent = styled.div`
