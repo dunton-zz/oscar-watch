@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
-import axios from "axios";
 
 const ProfileWrapper = styled.div`
   width: 100%;
@@ -42,10 +41,6 @@ const MovieMathHolder = styled.div`
 `;
 
 const ProfileHeader = props => {
-  const handleClicks = path => {
-    axios.get(path);
-    console.log("sent to oauth flow");
-  };
   const renderContent = () => {
     const { isLoggedIn, userName } = props;
     switch (isLoggedIn) {
@@ -54,17 +49,15 @@ const ProfileHeader = props => {
       case false:
         return (
           <ButtonHolder>
-            <Button
-              bsStyle="primary"
-              onClick={e => handleClicks("auth/google")}
-            >
-              Login With Google
+            <Button bsStyle="primary">
+              <a href="auth/google" style={{ color: "white" }}>
+                Login With Google
+              </a>
             </Button>
-            <Button
-              bsStyle="primary"
-              onClick={e => handleClicks("auth/facebook")}
-            >
-              Login With Facebook
+            <Button bsStyle="primary">
+              <a href="auth/facebook" style={{ color: "white" }}>
+                Login With Facebook
+              </a>
             </Button>
           </ButtonHolder>
         );
