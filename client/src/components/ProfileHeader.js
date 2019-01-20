@@ -72,7 +72,6 @@ const ProfileHeader = props => {
   const movieMath = props.isLoggedIn
     ? +(Math.round((props.number / 60) * 100 + "e+2") + "e-2") + "%"
     : "No Progress";
-  console.log(props.number);
   return (
     <ProfileWrapper>
       <MovieMathHolder>

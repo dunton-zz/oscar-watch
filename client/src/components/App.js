@@ -21,6 +21,7 @@ class App extends Component {
     };
 
     this.saveMovieData = this.saveMovieData.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
   handleClick = categoryTitle => {
     this.setState({
@@ -57,9 +58,7 @@ class App extends Component {
 
   saveMovieData = async function() {
     const { movies } = this.state;
-    console.log(movies);
     //send api request
-
     axios
       .post("api/save", movies)
       .then(res => {
@@ -108,18 +107,20 @@ class App extends Component {
 
   fetchUser = async function() {
     const res = await axios.get("api/current_user");
-    console.log(res.data.movies);
+    console.log(res.data);
     let userName, movies, number, isLoggedIn;
     if (res.data.movies !== undefined) {
       userName = res.data.name;
       movies = res.data.movies;
       number = movies.length;
       isLoggedIn = true;
+      console.log("if");
     } else {
       userName = "";
       movies = [];
       number = 0;
       isLoggedIn = false;
+      console.log("else");
     }
 
     this.setState({
@@ -135,9 +136,9 @@ class App extends Component {
     this.fetchUser();
   }
 
-  handleLogout = () => {
-    axios.get("api/logout").then(this.fetchUser());
-    console.log("logged out");
+  handleLogout = async function() {
+    await axios.get("api/logout");
+    this.fetchUser();
   };
 
   render() {
