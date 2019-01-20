@@ -61,9 +61,13 @@ class App extends Component {
     const { movies } = this.state;
     console.log(movies);
     //send api request
-    axios.post("/api/save", {
-      name: "FUCK YOU"
-    });
+
+    axios
+      .post("api/save", movies)
+      .then(res => {
+        return res;
+      })
+      .catch(error => console.log(error));
 
     return;
   };
@@ -107,11 +111,16 @@ class App extends Component {
   fetchUser = async function() {
     const res = await axios.get("/api/current_user");
     const userName = res.data.name;
-    const isLoggedIn = res.data.length > 0 ? true : false;
+    const movies = res.data.movies;
+    const number = movies.length;
+    const isLoggedIn = userName.length > 0 ? true : false;
     this.setState({
       userName,
-      isLoggedIn
+      isLoggedIn,
+      movies,
+      number
     });
+
     return;
   };
 
@@ -123,7 +132,7 @@ class App extends Component {
     const { modal, activeCategory, number, movies, userName } = this.state;
 
     const categories = modal ? <div /> : this.displayCategories();
-    console.log(userName);
+    console.log(this.state);
     return (
       <div>
         <Header

@@ -41,16 +41,9 @@ const MovieMathHolder = styled.div`
   }
 `;
 
-class ProfileHeader extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movies: null
-    };
-  }
-
-  renderContent = () => {
-    const { isLoggedIn, userName } = this.props;
+const ProfileHeader = props => {
+  const renderContent = () => {
+    const { isLoggedIn, userName } = props;
     switch (isLoggedIn) {
       case null:
         return;
@@ -76,26 +69,19 @@ class ProfileHeader extends Component {
     }
   };
 
-  render() {
-    const content = this.renderContent(this.props);
-    const movieMath = this.props.isLoggedIn
-      ? +(Math.round((this.props.number / 60) * 100 + "e+2") + "e-2") + "%"
-      : "No Progress";
-    return (
-      <ProfileWrapper>
-        <MovieMathHolder>
-          <p>{movieMath}</p>
-        </MovieMathHolder>
-        {content}
-      </ProfileWrapper>
-    );
-  }
-}
+  const content = renderContent(props);
+  const movieMath = props.isLoggedIn
+    ? +(Math.round((props.number / 60) * 100 + "e+2") + "e-2") + "%"
+    : "No Progress";
+  console.log(props.number);
+  return (
+    <ProfileWrapper>
+      <MovieMathHolder>
+        <p>{movieMath}</p>
+      </MovieMathHolder>
+      {content}
+    </ProfileWrapper>
+  );
+};
 
-function mapStateToProps(state) {
-  return {
-    movies: state.movies
-  };
-}
-
-export default connect(mapStateToProps)(ProfileHeader);
+export default ProfileHeader;
