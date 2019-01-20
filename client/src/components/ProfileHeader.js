@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
-import { connect } from "react-redux";
+import axios from "axios";
 
 const ProfileWrapper = styled.div`
   width: 100%;
@@ -42,6 +42,9 @@ const MovieMathHolder = styled.div`
 `;
 
 const ProfileHeader = props => {
+  const handleClicks = path => {
+    axios.get(path);
+  };
   const renderContent = () => {
     const { isLoggedIn, userName } = props;
     switch (isLoggedIn) {
@@ -50,15 +53,17 @@ const ProfileHeader = props => {
       case false:
         return (
           <ButtonHolder>
-            <Button bsStyle="primary">
-              <a href="/auth/google" style={{ color: "white" }}>
-                Login With Google
-              </a>
+            <Button
+              bsStyle="primary"
+              onClick={e => handleClicks("auth/google")}
+            >
+              Login With Google
             </Button>
-            <Button bsStyle="primary">
-              <a href="/auth/facebook" style={{ color: "white" }}>
-                Login With Facebook
-              </a>
+            <Button
+              bsStyle="primary"
+              onClick={e => handleClicks("auth/facebook")}
+            >
+              Login With Facebook
             </Button>
           </ButtonHolder>
         );

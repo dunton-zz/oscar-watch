@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Grid, Row } from "react-bootstrap";
-// import { connect } from "react-redux";
-// import { BrowserRouter as Router } from "react-router-dom";
 import CategoryHolder from "components/CategoryHolder";
+import LogoutButton from "components/LogoutButton";
 import MovieModal from "components/MovieModal";
 import Header from "components/Header";
 import data from "data/";
-// import * as actions from "../actions";
 import filmsWatched from "functions/filmsWatched";
 import axios from "axios";
 
@@ -109,18 +107,27 @@ class App extends Component {
   };
 
   fetchUser = async function() {
-    const res = await axios.get("/api/current_user");
-    const userName = res.data.name;
-    const movies = res.data.movies;
-    const number = movies.length;
-    const isLoggedIn = userName.length > 0 ? true : false;
+    const res = await axios.get("api/current_user");
+    console.log(res.data.movies);
+    let userName, movies, number, isLoggedIn;
+    if (res.data.movies !== undefined) {
+      userName = res.data.name;
+      movies = res.data.movies;
+      number = movies.length;
+      isLoggedIn = true;
+    } else {
+      userName = "";
+      movies = [];
+      number = 0;
+      isLoggedIn = false;
+    }
+
     this.setState({
       userName,
       isLoggedIn,
       movies,
       number
     });
-
     return;
   };
 
@@ -128,20 +135,31 @@ class App extends Component {
     this.fetchUser();
   }
 
+  handleLogout = () => {
+    axios.get("api/logout").then(this.fetchUser());
+    console.log("logged out");
+  };
+
   render() {
-    const { modal, activeCategory, number, movies, userName } = this.state;
+    const {
+      modal,
+      activeCategory,
+      number,
+      movies,
+      userName,
+      isLoggedIn
+    } = this.state;
 
     const categories = modal ? <div /> : this.displayCategories();
-    console.log(this.state);
     return (
       <div>
-        <Header
-          isLoggedIn={this.state.isLoggedIn}
-          number={number}
-          userName={userName}
-        />
+        <Header isLoggedIn={isLoggedIn} number={number} userName={userName} />
         <Grid fluid style={{ backgroundColor: "#d0e1f9", marginTop: 80 }}>
           <Row>{categories}</Row>
+          <LogoutButton
+            isLoggedIn={isLoggedIn}
+            handleLogout={this.handleLogout}
+          />
           <Row>
             <MovieModal
               isActive={modal}

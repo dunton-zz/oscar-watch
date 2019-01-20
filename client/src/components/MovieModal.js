@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Movie from "components/Movie";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
-import { connect } from "react-redux";
-import * as actions from "../actions";
 
 const ModalWrapper = styled.div`
   width: 100%;
@@ -145,8 +143,4 @@ class MovieModal extends Component {
   }
 }
 
-// export default connect(
-//   null,
-//   actions
-// )(MovieModal);
 export default MovieModal;
