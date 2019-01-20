@@ -20,6 +20,10 @@ const MovieContent = styled.div`
     margin-top: 0;
     margin-bottom: 0;
   }
+
+  @media (max-width: 700px) {
+    padding: 5px;
+  }
 `;
 
 class Movie extends Component {

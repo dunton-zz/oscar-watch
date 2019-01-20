@@ -22,8 +22,9 @@ const Modal = styled.div`
   top: 10%;
 
   @media (max-width: 700px) {
-    top: 15%;
+    margin-top: 30px;
     width: 90%;
+    height: 75%;
   }
 `;
 
@@ -67,6 +68,10 @@ const CategoryWrapper = styled.div`
 const ButtonHolder = styled.div`
   align-self: center;
   margin-top: 20px;
+
+  @media (max-width: 700px) {
+    margin-top: 10px;
+  }
 `;
 
 class MovieModal extends Component {
