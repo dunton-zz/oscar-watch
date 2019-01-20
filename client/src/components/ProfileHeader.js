@@ -28,6 +28,17 @@ const ButtonHolder = styled.div`
 
   button {
     margin-right: 10px;
+    border: 2px solid transparent;
+    background: #4d648d !important;
+
+    :hover {
+      background: #fff !important;
+      border: 2px solid #4d648d;
+      a {
+        color: #4d648d !important;
+        text-decoration: none !important;
+      }
+    }
 
     @media (max-width: 700px) {
       padding: 3px 12px;

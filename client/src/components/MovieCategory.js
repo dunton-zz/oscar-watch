@@ -14,6 +14,15 @@ const CategoryWrapper = styled.div`
   color: #ffffff;
   font-family: "Titillium Web", sans-serif;
   flex-direction: column;
+  cursor: pointer;
+
+  &:hover {
+    background: #283655;
+  }
+
+  &:focus {
+    background: #283655;
+  }
 
   h2 {
     font-size: 32px;
