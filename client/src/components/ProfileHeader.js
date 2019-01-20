@@ -44,6 +44,7 @@ const MovieMathHolder = styled.div`
 const ProfileHeader = props => {
   const handleClicks = path => {
     axios.get(path);
+    console.log("sent to oauth flow");
   };
   const renderContent = () => {
     const { isLoggedIn, userName } = props;
