@@ -6,6 +6,7 @@ import MovieModal from "components/MovieModal";
 import Header from "components/Header";
 import data from "data/";
 import filmsWatched from "functions/filmsWatched";
+import updateProgressNumber from "functions/updateProgressNumber";
 import axios from "axios";
 import styled from "styled-components";
 import colors from "styles/colors";
@@ -22,6 +23,7 @@ class App extends Component {
       activeCategory: null,
       isLoggedIn: false,
       movies: [],
+      // TODO fix number counting
       number: 0,
       userName: null
     };
@@ -78,7 +80,7 @@ class App extends Component {
   addMovie = movieTitle => {
     const addedMovieArray = this.state.movies;
     addedMovieArray.push(movieTitle);
-    const number = addedMovieArray.length;
+    const number = updateProgressNumber(addedMovieArray, data);
 
     this.setState({
       movies: addedMovieArray,
@@ -93,7 +95,7 @@ class App extends Component {
         removedMovieArray.splice(i, 1);
       }
     }
-    const number = removedMovieArray.length;
+    const number = updateProgressNumber(removedMovieArray, data);
 
     this.setState({
       movies: removedMovieArray,
