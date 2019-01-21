@@ -19,7 +19,7 @@ const LogoutButton = props => {
     props.handleLogout();
   };
   const renderContent = () => {
-    if (props.isLoggedIn) {
+    if (props.isLoggedIn && !props.modalActive) {
       return (
         <LogoutButtonWrapper onClick={handleClick}>LOGOUT</LogoutButtonWrapper>
       );

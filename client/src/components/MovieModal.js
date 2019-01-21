@@ -19,7 +19,7 @@ const Modal = styled.div`
   height: 80%;
   position: absolute;
   background: #283655;
-  top: 10%;
+  top: calc(80px + 4%);
 
   @media (max-width: 700px) {
     margin-top: 30px;
@@ -51,6 +51,8 @@ const MovieWrapper = styled.div`
   display: flex;
   justify-content: center;
   font-family: "Titillium Web", sans-serif;
+  max-height: 70%;
+  overflow-y: auto;
 
   > div {
     width: 80%;

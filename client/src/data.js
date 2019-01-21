@@ -11,7 +11,16 @@ const data = [
   },
   {
     category: "Best Director",
-    nominees: ["Cuaron", "Cooper", "Jenkins", "Spike Lee", "Yorgos"]
+    nominees: [
+      "Cuaron",
+      "Cooper",
+      "Jenkins",
+      "Spike Lee",
+      "Yorgos",
+      "Jenkins",
+      "Spike Lee",
+      "Yorgos"
+    ]
   },
   {
     category: "Best Actor",

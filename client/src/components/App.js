@@ -7,6 +7,11 @@ import Header from "components/Header";
 import data from "data/";
 import filmsWatched from "functions/filmsWatched";
 import axios from "axios";
+import styled from "styled-components";
+
+const AppWrapper = styled.div`
+  background: #d0e1f9;
+`;
 
 class App extends Component {
   constructor() {
@@ -153,13 +158,14 @@ class App extends Component {
 
     const categories = modal ? <div /> : this.displayCategories();
     return (
-      <div>
+      <AppWrapper>
         <Header isLoggedIn={isLoggedIn} number={number} userName={userName} />
         <Grid fluid style={{ backgroundColor: "#d0e1f9", marginTop: 80 }}>
           <Row>{categories}</Row>
           <LogoutButton
             isLoggedIn={isLoggedIn}
             handleLogout={this.handleLogout}
+            modalActive={modal}
           />
           <Row>
             <MovieModal
@@ -175,7 +181,7 @@ class App extends Component {
             />
           </Row>
         </Grid>
-      </div>
+      </AppWrapper>
     );
   }
 }
