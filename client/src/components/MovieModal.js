@@ -73,6 +73,10 @@ const ButtonHolder = styled.div`
   align-self: center;
   margin-top: 20px;
 
+  button {
+    border-radius: 10px;
+  }
+
   @media (max-width: 700px) {
     margin-top: 10px;
   }
@@ -124,7 +128,12 @@ class MovieModal extends Component {
   };
 
   handleSaveButton = e => {
-    const { closeModal, saveMovieData } = this.props;
+    const { closeModal, saveMovieData, isLoggedIn } = this.props;
+    if (!isLoggedIn) {
+      alert("LOGIN TO SAVE PROGRESS");
+      closeModal(e);
+      return;
+    }
     closeModal(e);
     saveMovieData();
   };

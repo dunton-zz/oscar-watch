@@ -177,6 +177,7 @@ class App extends Component {
               addMovie={this.addMovie}
               removeMovie={this.removeMovie}
               saveMovieData={this.saveMovieData}
+              isLoggedIn={isLoggedIn}
             />
           </Row>
         </Grid>

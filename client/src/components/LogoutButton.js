@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import colors from "styles/colors";
 import { keyframes } from "styled-components";
+import logoutButtonAnimation from "styles/logoutButtonAnimation";
 
 const slideIn = keyframes`
-  0% { right: -50px }
+  0% { right: -150px }
   100% { right: 10px; }
 `;
 
@@ -14,7 +15,7 @@ const LogoutButtonWrapper = styled.button`
   background-color: ${colors.fifth};
   position: fixed;
   bottom: 10px;
-  right: -50px;
+  right: -150px;
   font-family: "Titillium Web", sans-serif;
   border-radius: 10px;
   font-size: 20px;
@@ -28,7 +29,9 @@ const LogoutButtonWrapper = styled.button`
     border: 2px solid ${colors.fourth}
   }
 
-  animation: ${slideIn} 0.5s linear forwards;
+  animation: ${slideIn} ${logoutButtonAnimation.time}s ${
+  logoutButtonAnimation.type
+} forwards;
 `;
 
 const LogoutButton = props => {
