@@ -12,17 +12,17 @@ const CategoryWrapper = styled.div`
   background-color: ${colors.first};
   margin: 20px 0px;
   border-radius: 10px;
-  color: ${colors.fourth}fff;
+  color: ${colors.fourth};
   font-family: "Titillium Web", sans-serif;
   flex-direction: column;
   cursor: pointer;
 
   &:hover {
-    background: #283655;
+    background: ${colors.fifth};
   }
 
   &:focus {
-    background: #283655;
+    background: ${colors.fifth};
   }
 
   h2 {
