@@ -1,8 +1,9 @@
-function filmsWatched(dataCategory, movies) {
+function filmsWatched(nominees, movies) {
   let number = 0;
+  const nomMovies = nominees.map(nom => nom.movie);
   if (movies.length > 0) {
     movies.forEach(movie => {
-      if (movie.activeCategory === dataCategory) {
+      if (nomMovies.indexOf(movie) > -1) {
         number++;
       }
     });

@@ -99,10 +99,11 @@ class MovieModal extends Component {
       return data.map((dataCategory, i) => {
         if (dataCategory.category === activeCategory) {
           const nominees = dataCategory.nominees;
-          return nominees.map((nominee, i) => {
+          return nominees.map((item, i) => {
             return (
               <Movie
-                movieTitle={nominee}
+                nominee={item.nominee}
+                movieTitle={item.movie}
                 key={i}
                 movies={movies}
                 activeCategory={activeCategory}

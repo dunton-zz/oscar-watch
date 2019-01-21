@@ -47,7 +47,7 @@ class App extends Component {
   displayCategories = () => {
     return data.map((dataCategory, i) => {
       const numberWatched = filmsWatched(
-        dataCategory.category,
+        dataCategory.nominees,
         this.state.movies
       );
       return (
@@ -89,10 +89,7 @@ class App extends Component {
   removeMovie = movieTitle => {
     const removedMovieArray = this.state.movies;
     for (let i = 0; i < removedMovieArray.length; i++) {
-      if (
-        removedMovieArray[i].activeCategory === movieTitle.activeCategory &&
-        removedMovieArray[i].movieTitle === movieTitle.movieTitle
-      ) {
+      if (removedMovieArray[i] === movieTitle) {
         removedMovieArray.splice(i, 1);
       }
     }
@@ -153,7 +150,6 @@ class App extends Component {
       userName,
       isLoggedIn
     } = this.state;
-
     const categories = modal ? <div /> : this.displayCategories();
     return (
       <AppWrapper>

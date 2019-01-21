@@ -48,22 +48,18 @@ class Movie extends Component {
   };
 
   changeMovieStatus = movieTitle => {
-    const { addMovie, removeMovie, activeCategory } = this.props;
-    const movieData = { activeCategory, movieTitle };
+    const { addMovie, removeMovie, nominee } = this.props;
     if (this.state.checked) {
-      addMovie(movieData);
+      addMovie(movieTitle);
     } else {
-      removeMovie(movieData);
+      removeMovie(movieTitle);
     }
   };
 
   componentWillMount() {
     const { movies, movieTitle, activeCategory } = this.props;
     for (let i = 0; i < movies.length; i++) {
-      if (
-        movies[i].activeCategory === activeCategory &&
-        movies[i].movieTitle === movieTitle
-      ) {
+      if (movies[i] === movieTitle) {
         this.setState({ checked: true });
       }
     }
@@ -77,7 +73,7 @@ class Movie extends Component {
           classes={{ colorPrimary: `${colors.second}` }}
           color="primary"
         />
-        <div>{this.props.movieTitle}</div>
+        <div>{this.props.nominee}</div>
       </MovieContent>
     );
   }
