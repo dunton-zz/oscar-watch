@@ -8,9 +8,10 @@ import data from "data/";
 import filmsWatched from "functions/filmsWatched";
 import axios from "axios";
 import styled from "styled-components";
+import colors from "styles/colors";
 
 const AppWrapper = styled.div`
-  background: #d0e1f9;
+  background: ${colors.second};
 `;
 
 class App extends Component {
@@ -112,20 +113,17 @@ class App extends Component {
 
   fetchUser = async function() {
     const res = await axios.get("api/current_user");
-    console.log(res.data);
     let userName, movies, number, isLoggedIn;
     if (res.data.movies !== undefined) {
       userName = res.data.name;
       movies = res.data.movies;
       number = movies.length;
       isLoggedIn = true;
-      console.log("if");
     } else {
       userName = "";
       movies = [];
       number = 0;
       isLoggedIn = false;
-      console.log("else");
     }
 
     this.setState({
@@ -160,7 +158,10 @@ class App extends Component {
     return (
       <AppWrapper>
         <Header isLoggedIn={isLoggedIn} number={number} userName={userName} />
-        <Grid fluid style={{ backgroundColor: "#d0e1f9", marginTop: 80 }}>
+        <Grid
+          fluid
+          style={{ backgroundColor: `${colors.second}`, marginTop: 80 }}
+        >
           <Row>{categories}</Row>
           <LogoutButton
             isLoggedIn={isLoggedIn}

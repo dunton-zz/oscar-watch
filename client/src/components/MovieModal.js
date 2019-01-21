@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import Movie from "components/Movie";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
+import colors from "styles/colors";
 
 const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  background: #d0e1f9;
+  background: ${colors.second};
   top: 0;
   display: flex;
   justify-content: center;
@@ -20,6 +21,7 @@ const Modal = styled.div`
   position: absolute;
   background: #283655;
   top: calc(80px + 4%);
+  border-radius: 10px;
 
   @media (max-width: 700px) {
     margin-top: 30px;
@@ -31,12 +33,12 @@ const Modal = styled.div`
 const CategoryContent = styled.div`
   display: flex;
   justify-content: center;
-  color: white;
+  color: ${colors.fourth};
   margin-top: 10px;
 `;
 
 const CloseButton = styled.div`
-  color: #fff;
+  color: ${colors.fourth};
   justify-self: flex-end;
   top: 0;
   right: 0;

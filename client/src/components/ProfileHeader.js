@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
+import colors from "styles/colors";
 
 const ProfileWrapper = styled.div`
   width: 100%;
   height: 80px;
-  background: #1e1f26;
-  color: white;
+  background: ${colors.third};
+  color: ${colors.fourth};
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -29,13 +30,13 @@ const ButtonHolder = styled.div`
   button {
     margin-right: 10px;
     border: 2px solid transparent;
-    background: #4d648d !important;
+    background: ${colors.first} !important;
 
     :hover {
-      background: #fff !important;
-      border: 2px solid #4d648d;
+      background: ${colors.fourth} !important;
+      border: 2px solid ${colors.first};
       a {
-        color: #4d648d !important;
+        color: ${colors.first} !important;
         text-decoration: none !important;
       }
     }
@@ -71,12 +72,12 @@ const ProfileHeader = props => {
         return (
           <ButtonHolder>
             <Button bsStyle="primary">
-              <a href="auth/google" style={{ color: "white" }}>
+              <a href="auth/google" style={{ color: `${colors.fourth}` }}>
                 Login With Google
               </a>
             </Button>
             <Button bsStyle="primary">
-              <a href="auth/facebook" style={{ color: "white" }}>
+              <a href="auth/facebook" style={{ color: `${colors.fourth}` }}>
                 Login With Facebook
               </a>
             </Button>

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import colors from "styles/colors";
 
 const CategoryWrapper = styled.div`
   height: 300px;
@@ -8,10 +9,10 @@ const CategoryWrapper = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 32px;
-  background-color: #4d648d;
+  background-color: ${colors.first};
   margin: 20px 0px;
   border-radius: 10px;
-  color: #ffffff;
+  color: ${colors.fourth}fff;
   font-family: "Titillium Web", sans-serif;
   flex-direction: column;
   cursor: pointer;

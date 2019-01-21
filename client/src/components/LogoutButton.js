@@ -1,17 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import colors from "styles/colors";
 
 const LogoutButtonWrapper = styled.button`
   width: 150px;
   height: 50px;
-  background-color: #283655;
+  background-color: ${colors.first};
   position: fixed;
   bottom: 10px;
   right: 10px;
   font-family: "Titillium Web", sans-serif;
   border-radius: 10px;
   font-size: 20px;
-  color: white;
+  color: ${colors.fourth};
 `;
 
 const LogoutButton = props => {

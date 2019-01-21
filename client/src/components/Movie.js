@@ -4,12 +4,13 @@ import styled from "styled-components";
 // import * as actions from "../actions";
 // import { Checkbox } from "react-bootstrap";
 import Checkbox from "@material-ui/core/Checkbox";
+import colors from "styles/colors";
 
 const MovieContent = styled.div`
   border: 1px solid black;
   width: 100%;
   margin: 10px;
-  background: white;
+  background: ${colors.fourth};
   display: flex;
   align-items: center;
   border-radius: 10px;
@@ -70,11 +71,10 @@ class Movie extends Component {
 
   render() {
     return (
-      <MovieContent>
+      <MovieContent onClick={this.handleClick}>
         <Checkbox
           checked={this.state.checked}
-          onChange={this.handleClick}
-          classes={{ colorPrimary: "#283655" }}
+          classes={{ colorPrimary: `${colors.second}` }}
           color="primary"
         />
         <div>{this.props.movieTitle}</div>
