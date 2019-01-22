@@ -12,7 +12,8 @@ const CategoryHolder = props => {
     removeMovie,
     countMovies,
     movies,
-    isLoggedIn
+    isLoggedIn,
+    saveMovieData
   } = props;
   return (
     <Col md={6} sm={12} style={{ display: "flex", justifyContent: "center" }}>
@@ -26,6 +27,7 @@ const CategoryHolder = props => {
         countMovies={countMovies}
         movies={movies}
         isLoggedIn={isLoggedIn}
+        saveMovieData={saveMovieData}
       />
     </Col>
   );

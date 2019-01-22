@@ -65,6 +65,7 @@ class App extends Component {
           removeMovie={this.removeMovie}
           movies={this.state.movies}
           isLoggedIn={this.state.isLoggedIn}
+          saveMovieData={this.saveMovieData}
         />
       );
     });
@@ -152,7 +153,6 @@ class App extends Component {
   addComponentRows = () => {
     const categories = this.displayCategories();
     let formattedCategories = [];
-    console.log(categories);
     for (let i = 0; i < categories.length; i++) {
       if (i % 2 === 0) {
         let content = (
