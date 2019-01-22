@@ -11,14 +11,14 @@ const HeaderWrapper = styled.div`
 `;
 
 const Header = props => {
-  const { isLoggedIn, number, userName } = props;
+  const { isLoggedIn, userName, movies } = props;
   return (
     <HeaderWrapper>
       {" "}
       <ProfileHeader
         userName={userName}
         isLoggedIn={isLoggedIn}
-        number={number}
+        movies={movies}
       />
     </HeaderWrapper>
   );

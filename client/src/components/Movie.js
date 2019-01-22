@@ -7,16 +7,17 @@ import Checkbox from "@material-ui/core/Checkbox";
 import colors from "styles/colors";
 
 const MovieContent = styled.div`
-  border: 1px solid black;
-  width: 100%;
+  border-bottom: 1px solid black;
+  width: 98%;
   margin: 10px;
-  background: ${colors.fourth};
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
-  border-radius: 10px;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 20px 0px;
   font-family: "Titillium Web", sans-serif;
-
+  color: #001427;
+  font-size: 16px;
   .checkbox {
     margin-top: 0;
     margin-bottom: 0;
@@ -57,7 +58,7 @@ class Movie extends Component {
   };
 
   componentWillMount() {
-    const { movies, movieTitle, activeCategory } = this.props;
+    const { movies, movieTitle } = this.props;
     for (let i = 0; i < movies.length; i++) {
       if (movies[i] === movieTitle) {
         this.setState({ checked: true });

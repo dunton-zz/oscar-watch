@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
 import colors from "styles/colors";
+import data from "data/";
 
 const ProfileWrapper = styled.div`
   width: 100%;
@@ -9,7 +10,7 @@ const ProfileWrapper = styled.div`
   background: ${colors.third};
   color: ${colors.fourth};
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   font-size: 24px;
   font-weight: bold;
@@ -26,11 +27,18 @@ const ProfileWrapper = styled.div`
 
 const ButtonHolder = styled.div`
   justify-self: flex-end;
-
+  font-size: 16px;
+  span {
+    margin-right: 5px;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
   button {
     margin-right: 10px;
     border: 2px solid transparent;
     background: ${colors.first} !important;
+    font-size: 16px;
 
     :hover {
       background: ${colors.fourth} !important;
@@ -55,10 +63,23 @@ const ButtonHolder = styled.div`
 
 const MovieMathHolder = styled.div`
   margin: 0 auto 0 10px;
+  background: #dfc484;
 
+  @media screen and (max-width: 768px) {
+    background: inherit;
+  }
   p {
     margin: 0 0 0 10px;
-    padding: 0;
+    padding: 10px;
+    font-size: 16px;
+
+    @media screen and (max-width: 768px) {
+      padding: 5px;
+    }
+
+    span {
+      color: #a71d31;
+    }
   }
 `;
 
@@ -71,6 +92,7 @@ const ProfileHeader = props => {
       case false:
         return (
           <ButtonHolder>
+            <span>SIGN IN WITH:</span>
             <Button bsStyle="primary">
               <a href="auth/google" style={{ color: `${colors.fourth}` }}>
                 Login With Google
@@ -89,14 +111,28 @@ const ProfileHeader = props => {
         return;
     }
   };
-
+  const numberOfMoviesWatched = (movies, data) => {
+    let value = 0;
+    let flattenedAllMovies = [];
+    data.forEach(movieCategory => {
+      movieCategory.nominees.forEach(nom => flattenedAllMovies.push(nom.movie));
+    });
+    flattenedAllMovies.forEach(nom => {
+      if (movies.indexOf(nom) > -1) {
+        value++;
+      }
+    });
+    return value;
+  };
   const content = renderContent(props);
-  const movieMath =
-    +(Math.round((props.number / 60) * 100 + "e+2") + "e-2") + "%";
+  const number = numberOfMoviesWatched(props.movies, data);
+  const movieMath = +(Math.round((number / 120) * 100 + "e+2") + "e-2") + "%";
   return (
     <ProfileWrapper>
       <MovieMathHolder>
-        <p>{movieMath}</p>
+        <p>
+          TOTAL PROGRESS: <span>{movieMath}</span>
+        </p>
       </MovieMathHolder>
       {content}
     </ProfileWrapper>

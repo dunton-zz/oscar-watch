@@ -12,7 +12,7 @@ const slideIn = keyframes`
 const LogoutButtonWrapper = styled.button`
   width: 150px;
   height: 50px;
-  background-color: ${colors.fifth};
+  background-color: ${colors.first};
   position: fixed;
   bottom: 10px;
   right: -150px;
@@ -20,13 +20,13 @@ const LogoutButtonWrapper = styled.button`
   border-radius: 10px;
   font-size: 20px;
   color: ${colors.fourth};
-  border: 2px solid ${colors.fifth}
+  border: 2px solid ${colors.fourth}
 
 
   :hover {
-    background: ${colors.fifth};
-    color: ${colors.fourth};
-    border: 2px solid ${colors.fourth}
+    background: ${colors.fourth};
+    color: ${colors.first};
+    border: 2px solid ${colors.first}
   }
 
   animation: ${slideIn} ${logoutButtonAnimation.time}s ${

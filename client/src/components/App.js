@@ -3,6 +3,7 @@ import { Grid, Row } from "react-bootstrap";
 import CategoryHolder from "components/CategoryHolder";
 import LogoutButton from "components/LogoutButton";
 import MovieModal from "components/MovieModal";
+import TimeToOscars from "components/TimeToOscars";
 import Header from "components/Header";
 import data from "data/";
 import filmsWatched from "functions/filmsWatched";
@@ -13,6 +14,7 @@ import colors from "styles/colors";
 
 const AppWrapper = styled.div`
   background: ${colors.second};
+  padding-bottom: 70px;
 `;
 
 class App extends Component {
@@ -23,7 +25,6 @@ class App extends Component {
       activeCategory: null,
       isLoggedIn: false,
       movies: [],
-      // TODO fix number counting
       number: 0,
       userName: null
     };
@@ -59,6 +60,10 @@ class App extends Component {
           key={i}
           nomineeNumber={dataCategory.nominees.length}
           numberWatched={numberWatched}
+          countMovies={this.countMovies}
+          addMovie={this.addMovie}
+          removeMovie={this.removeMovie}
+          movies={this.state.movies}
         />
       );
     });
@@ -147,7 +152,7 @@ class App extends Component {
     const {
       modal,
       activeCategory,
-      number,
+
       movies,
       userName,
       isLoggedIn
@@ -155,31 +160,21 @@ class App extends Component {
     const categories = modal ? <div /> : this.displayCategories();
     return (
       <AppWrapper>
-        <Header isLoggedIn={isLoggedIn} number={number} userName={userName} />
+        <Header isLoggedIn={isLoggedIn} movies={movies} userName={userName} />
         <Grid
           fluid
           style={{ backgroundColor: `${colors.second}`, marginTop: 80 }}
         >
+          <Row>
+            <TimeToOscars />
+          </Row>
           <Row>{categories}</Row>
           <LogoutButton
             isLoggedIn={isLoggedIn}
             handleLogout={this.handleLogout}
             modalActive={modal}
           />
-          <Row>
-            <MovieModal
-              isActive={modal}
-              activeCategory={activeCategory}
-              closeModal={this.closeModal}
-              movies={movies}
-              data={data}
-              countMovies={this.countMovies}
-              addMovie={this.addMovie}
-              removeMovie={this.removeMovie}
-              saveMovieData={this.saveMovieData}
-              isLoggedIn={isLoggedIn}
-            />
-          </Row>
+          <Row />
         </Grid>
       </AppWrapper>
     );

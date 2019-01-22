@@ -1,8 +1,8 @@
 const colors = {
-  first: "#4d648d",
-  second: "#d0e1f9",
-  third: "#1e1f26",
-  fourth: "#fff",
+  first: "#DFC484",
+  second: "#001427",
+  third: "#DFB458",
+  fourth: "#001427",
   fifth: "#283655"
 };
 
