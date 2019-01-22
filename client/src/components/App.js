@@ -64,6 +64,7 @@ class App extends Component {
           addMovie={this.addMovie}
           removeMovie={this.removeMovie}
           movies={this.state.movies}
+          isLoggedIn={this.state.isLoggedIn}
         />
       );
     });
