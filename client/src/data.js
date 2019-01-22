@@ -57,7 +57,7 @@ const data = [
       { nominee: "Sam Elliot (A Star Is Born)", movie: "A Star Is Born" },
       {
         nominee: "Richard E. Grant (Can You Ever Forgive Me)",
-        movie: "Can You Ever Forgive Me"
+        movie: "Can You Ever Forgive Me?"
       },
       { nominee: "Sam Rockwell (Vice)", movie: "Vice" }
     ]
