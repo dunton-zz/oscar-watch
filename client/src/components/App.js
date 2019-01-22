@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Grid, Row } from "react-bootstrap";
 import CategoryHolder from "components/CategoryHolder";
 import LogoutButton from "components/LogoutButton";
-import MovieModal from "components/MovieModal";
 import TimeToOscars from "components/TimeToOscars";
 import Header from "components/Header";
 import data from "data/";

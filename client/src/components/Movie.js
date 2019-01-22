@@ -49,7 +49,7 @@ class Movie extends Component {
   };
 
   changeMovieStatus = movieTitle => {
-    const { addMovie, removeMovie, nominee } = this.props;
+    const { addMovie, removeMovie } = this.props;
     if (this.state.checked) {
       addMovie(movieTitle);
     } else {
