@@ -15,52 +15,64 @@ const data = [
   {
     category: "Best Director",
     nominees: [
-      { nominee: "Spike Lee", movie: "BlacKkKlansman" },
-      { nominee: "Pawel Pawlikowski", movie: "Cold War" },
-      { nominee: "Yorgos Lanthimos", movie: "The Favourite" },
-      { nominee: "Alfonso Cuarón", movie: "Roma" },
-      { nominee: "Adam McKay", movie: "Vice" }
+      { nominee: "Spike Lee (BlacKkKlansman)", movie: "BlacKkKlansman" },
+      { nominee: "Pawel Pawlikowski (Cold War)", movie: "Cold War" },
+      { nominee: "Yorgos Lanthimos (The Favourite)", movie: "The Favourite" },
+      { nominee: "Alfonso Cuarón (Roma)", movie: "Roma" },
+      { nominee: "Adam McKay (Vice)", movie: "Vice" }
     ]
   },
   {
     category: "Actor In a Leading Role",
     nominees: [
-      { nominee: "Christian Bale", movie: "Vice" },
-      { nominee: "Bradley Cooper", movie: "A Star is Born" },
-      { nominee: "Willem Dafoe", movie: "At Eternity's Gate" },
-      { nominee: "Rami Malek", movie: "Bohemian Rhapsody" },
-      { nominee: "Viggo Mortensen", movie: "Green Book" }
+      { nominee: "Christian Bale (Vice)", movie: "Vice" },
+      { nominee: "Bradley Cooper (A Star Is Born)", movie: "A Star Is Born" },
+      {
+        nominee: "Willem Dafoe (At Eternity's Gate)",
+        movie: "At Eternity's Gate"
+      },
+      { nominee: "Rami Malek (Bohemian Rhapsody)", movie: "Bohemian Rhapsody" },
+      { nominee: "Viggo Mortensen (Green Book)", movie: "Green Book" }
     ]
   },
   {
     category: "Actress In a Leading Role",
     nominees: [
-      { nominee: "Yalitza Aparicio", movie: "Roma" },
-      { nominee: "Glenn Close", movie: "The Wife" },
-      { nominee: "Lady Gaga", movie: "A Star Is Born" },
-      { nominee: "Olivia Colman", movie: "The Favourite" },
-      { nominee: "Melissa McCarthy", movie: "Can You Ever Forgive Me?" }
+      { nominee: "Yalitza Aparicio (Roma)", movie: "Roma" },
+      { nominee: "Glenn Close (The Wife)", movie: "The Wife" },
+      { nominee: "Lady Gaga (A Star Is Born)", movie: "A Star Is Born" },
+      { nominee: "Olivia Colman (The Favourite)", movie: "The Favourite" },
+      {
+        nominee: "Melissa McCarthy (Can You Ever Forgive Me?)",
+        movie: "Can You Ever Forgive Me?"
+      }
     ]
   },
 
   {
     category: "Best Supporting Actor",
     nominees: [
-      { nominee: "Mahershala Ali", movie: "Green Book" },
-      { nominee: "Adam Driver", movie: "BlackKKlansman" },
-      { nominee: "Sam Elliot", movie: "A Star Is Born" },
-      { nominee: "Richard E. Grant", movie: "Can You Ever Forgive Me" },
-      { nominee: "Sam Rockwell", movie: "Vice" }
+      { nominee: "Mahershala Ali (Green Book)", movie: "Green Book" },
+      { nominee: "Adam Driver (BlackKKlansman)", movie: "BlackKKlansman" },
+      { nominee: "Sam Elliot (A Star Is Born)", movie: "A Star Is Born" },
+      {
+        nominee: "Richard E. Grant (Can You Ever Forgive Me)",
+        movie: "Can You Ever Forgive Me"
+      },
+      { nominee: "Sam Rockwell (Vice)", movie: "Vice" }
     ]
   },
   {
     category: "Best Supporting Actress",
     nominees: [
-      { nominee: "Amy Adams", movie: "Vice" },
-      { nominee: "Marina de Tavira", movie: "Roma" },
-      { nominee: "Regina King", movie: "If Beale Street Could Talk" },
-      { nominee: "Emma Stone", movie: "The Favourite" },
-      { nominee: "Rachel Weisz", movie: "The Favourite" }
+      { nominee: "Amy Adams (Vice)", movie: "Vice" },
+      { nominee: "Marina de Tavira (Roma)", movie: "Roma" },
+      {
+        nominee: "Regina King (If Beale Street Could Talk)",
+        movie: "If Beale Street Could Talk"
+      },
+      { nominee: "Emma Stone (The Favourite)", movie: "The Favourite" },
+      { nominee: "Rachel Weisz (The Favourite)", movie: "The Favourite" }
     ]
   },
   {
@@ -178,15 +190,16 @@ const data = [
   {
     category: "Best Original Song",
     nominees: [
-      { nominee: "All The Stars", movie: "Black Panther" },
-      { nominee: "I'll Fight", movie: "RBG" },
-      { nominee: "Shallow", movie: "A Star Is Born" },
+      { nominee: "All The Stars (Black Panther)", movie: "Black Panther" },
+      { nominee: "I'll Fight (RBG)", movie: "RBG" },
+      { nominee: "Shallow (A Star Is Born)", movie: "A Star Is Born" },
       {
-        nominee: "The Place Where Lost Things Go",
+        nominee: "The Place Where Lost Things Go (Mary Poppins Returns)",
         movie: "Mary Poppins Returns"
       },
       {
-        nominee: "When A Cowboy Trades His Spurs For Wings",
+        nominee:
+          "When A Cowboy Trades His Spurs For Wings (The Ballad of Buster Scruggs)",
         movie: "The Ballad of Buster Scruggs"
       }
     ]
