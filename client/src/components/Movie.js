@@ -4,7 +4,19 @@ import styled from "styled-components";
 // import * as actions from "../actions";
 // import { Checkbox } from "react-bootstrap";
 import Checkbox from "@material-ui/core/Checkbox";
+import { withStyles } from "@material-ui/core/styles";
 import colors from "styles/colors";
+
+const checkBoxStyles = theme => ({
+  root: {
+    "&$checked": {
+      color: "#001427"
+    }
+  },
+  checked: {}
+});
+
+const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
 const MovieContent = styled.div`
   border-bottom: 1px solid black;
@@ -69,11 +81,7 @@ class Movie extends Component {
   render() {
     return (
       <MovieContent onClick={this.handleClick}>
-        <Checkbox
-          checked={this.state.checked}
-          classes={{ colorPrimary: `${colors.second}` }}
-          color="primary"
-        />
+        <CustomCheckbox checked={this.state.checked} color="primary" />
         <div>{this.props.nominee}</div>
       </MovieContent>
     );
