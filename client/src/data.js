@@ -3,7 +3,7 @@ const data = [
     category: "Best Picture",
     nominees: [
       { nominee: "Black Panther", movie: "Black Panther" },
-      { nominee: "BlacKkKlansman", movie: "BlacKkKlansman" },
+      { nominee: "BlacKKKlansman", movie: "BlacKKKlansman" },
       { nominee: "Bohemian Rhapsody", movie: "Bohemian Rhapsody" },
       { nominee: "The Favourite", movie: "The Favourite" },
       { nominee: "Green Book", movie: "Green Book" },
@@ -15,7 +15,7 @@ const data = [
   {
     category: "Best Director",
     nominees: [
-      { nominee: "Spike Lee (BlacKkKlansman)", movie: "BlacKkKlansman" },
+      { nominee: "Spike Lee (BlacKKKlansman)", movie: "BlacKKKlansman" },
       { nominee: "Pawel Pawlikowski (Cold War)", movie: "Cold War" },
       { nominee: "Yorgos Lanthimos (The Favourite)", movie: "The Favourite" },
       { nominee: "Alfonso Cuarón (Roma)", movie: "Roma" },
@@ -53,7 +53,7 @@ const data = [
     category: "Best Supporting Actor",
     nominees: [
       { nominee: "Mahershala Ali (Green Book)", movie: "Green Book" },
-      { nominee: "Adam Driver (BlackKKlansman)", movie: "BlackKKlansman" },
+      { nominee: "Adam Driver (BlacKKKlansman)", movie: "BlacKKKlansman" },
       { nominee: "Sam Elliot (A Star Is Born)", movie: "A Star Is Born" },
       {
         nominee: "Richard E. Grant (Can You Ever Forgive Me)",
@@ -93,7 +93,7 @@ const data = [
         nominee: "The Ballad of Buster Scruggs",
         movie: "The Ballad of Buster Scruggs"
       },
-      { nominee: "BlacKkKlansman", movie: "BlacKkKlansman" },
+      { nominee: "BlacKKKlansman", movie: "BlacKKKlansman" },
       {
         nominee: "Can You Ever Forgive Me?",
         movie: "Can You Ever Forgive Me?"
@@ -178,7 +178,7 @@ const data = [
     category: "Best Original Score",
     nominees: [
       { nominee: "Black Panther", movie: "Black Panther" },
-      { nominee: "BlacKkKlansman", movie: "BlacKkKlansman" },
+      { nominee: "BlacKKKlansman", movie: "BlacKKKlansman" },
       {
         nominee: "If Beale Street Could Talk",
         movie: "If Beale Street Could Talk"
@@ -268,7 +268,7 @@ const data = [
   {
     category: "Best Film Editing",
     nominees: [
-      { nominee: "BlacKkKlansman", movie: "BlacKkKlansman" },
+      { nominee: "BlacKKKlansman", movie: "BlacKKKlansman" },
       { nominee: "Bohemian Rhapsody", movie: "Bohemian Rhapsody" },
       { nominee: "Green Book", movie: "Green Book" },
       { nominee: "The Favourite", movie: "The Favourite" },
