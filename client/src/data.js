@@ -6,6 +6,9 @@ const data = [
       { nominee: "Vice", movie: "Vice" },
       { nominee: "Green Book", movie: "Green Book" },
       { nominee: "Star is Born", movie: "Star is Born" },
+      { nominee: "Favourite", movie: "Favourite" },
+      { nominee: "Favourite", movie: "Favourite" },
+      { nominee: "Favourite", movie: "Favourite" },
       { nominee: "Favourite", movie: "Favourite" }
     ]
   },
