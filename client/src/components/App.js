@@ -52,6 +52,7 @@ class App extends Component {
         dataCategory.nominees,
         this.state.movies
       );
+
       return (
         <CategoryHolder
           handleClick={this.handleClick}
@@ -147,16 +148,28 @@ class App extends Component {
     this.fetchUser();
   };
 
-  render() {
-    const {
-      modal,
-      activeCategory,
+  addComponentRows = () => {
+    const categories = this.displayCategories();
+    let formattedCategories = [];
+    console.log(categories);
+    for (let i = 0; i < categories.length; i++) {
+      if (i % 2 === 0) {
+        let content = (
+          <Row key={i}>
+            {categories[i]}
+            {categories[i + 1]}
+          </Row>
+        );
+        formattedCategories.push(content);
+      }
+    }
 
-      movies,
-      userName,
-      isLoggedIn
-    } = this.state;
-    const categories = modal ? <div /> : this.displayCategories();
+    return formattedCategories;
+  };
+
+  render() {
+    const { modal, movies, userName, isLoggedIn } = this.state;
+    const categories = this.addComponentRows();
     return (
       <AppWrapper>
         <Header isLoggedIn={isLoggedIn} movies={movies} userName={userName} />
@@ -167,7 +180,8 @@ class App extends Component {
           <Row>
             <TimeToOscars />
           </Row>
-          <Row>{categories}</Row>
+          {categories}
+
           <LogoutButton
             isLoggedIn={isLoggedIn}
             handleLogout={this.handleLogout}
