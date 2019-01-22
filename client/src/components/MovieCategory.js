@@ -31,6 +31,9 @@ const CategoryWrapper = styled.div`
     align-items: center;
     &.sideHold {
       margin-right: 10px;
+      @screen and (max-width: 768px) {
+        padding-right: 5px;
+      }
     }
     div.chevron {
       transform: rotate(90deg);
@@ -64,6 +67,8 @@ const ButtonHolder = styled.div`
   button {
     background: none !important;
     color: ${colors.fourth};
+    border: none !important;
+    margin: 0 auto;
   }
 
   @media (max-width: 700px) {

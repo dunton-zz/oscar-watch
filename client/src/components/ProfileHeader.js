@@ -34,6 +34,9 @@ const ButtonHolder = styled.div`
       display: none;
     }
   }
+  @media screen and (max-width: 768px) {
+    margin-top: 4px;
+  }
   button {
     margin-right: 10px;
     border: 2px solid transparent;
