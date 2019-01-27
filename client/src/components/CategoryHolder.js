@@ -7,7 +7,6 @@ const CategoryHolder = props => {
     handleClick,
     categoryTitle,
     nomineeNumber,
-    numberWatched,
     addMovie,
     removeMovie,
     countMovies,
@@ -15,6 +14,13 @@ const CategoryHolder = props => {
     isLoggedIn,
     saveMovieData
   } = props;
+  let { numberWatched } = props;
+  if (
+    categoryTitle === "Best Supporting Actress" &&
+    movies.indexOf("The Favourite") > -1
+  ) {
+    numberWatched++;
+  }
   return (
     <Col md={6} sm={12} style={{ display: "flex", justifyContent: "center" }}>
       <MovieCategory

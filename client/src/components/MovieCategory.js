@@ -155,8 +155,8 @@ class MovieCategory extends Component {
     }
   };
   saveMovieData = () => {
-    const { saveMovieData, movies } = this.props;
-    saveMovieData(movies);
+    const { saveMovies, movies } = this.props;
+    saveMovies(movies);
   };
 
   handleSaveButton = e => {
