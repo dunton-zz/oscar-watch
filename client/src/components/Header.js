@@ -14,7 +14,6 @@ const Header = props => {
   const { isLoggedIn, userName, movies } = props;
   return (
     <HeaderWrapper>
-      {" "}
       <ProfileHeader
         userName={userName}
         isLoggedIn={isLoggedIn}

@@ -114,9 +114,10 @@ const ProfileHeader = props => {
         return;
     }
   };
+  let flattenedAllMovies;
   const numberOfMoviesWatched = (movies, data) => {
     let value = 0;
-    let flattenedAllMovies = [];
+    flattenedAllMovies = [];
     data.forEach(movieCategory => {
       movieCategory.nominees.forEach(nom => flattenedAllMovies.push(nom.movie));
     });
@@ -129,7 +130,9 @@ const ProfileHeader = props => {
   };
   const content = renderContent(props);
   const number = numberOfMoviesWatched(props.movies, data);
-  const movieMath = +(Math.round((number / 120) * 100 + "e+2") + "e-2") + "%";
+  const movieMath =
+    +(Math.round((number / flattenedAllMovies.length) * 100 + "e+2") + "e-2") +
+    "%";
   return (
     <ProfileWrapper>
       <MovieMathHolder>
