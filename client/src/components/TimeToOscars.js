@@ -38,7 +38,7 @@ class TimeToOscars extends Component {
   }
 
   timeToFinish = () => {
-    const countDownDate = new Date("Feb 24, 2019 20:00:00").getTime();
+    const countDownDate = new Date("Feb 9, 2020 20:00:00").getTime();
     let time;
     setInterval(() => {
       const now = new Date().getTime();
